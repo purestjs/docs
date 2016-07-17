@@ -1,7 +1,7 @@
 
 # Provider Configuration
 
-Once you have Purest initialized you can create a provider instance. A provider instance needs at minimum provider name and provider configuration:
+Once we have Purest initialized we can create a provider instance. A provider instance needs provider name and provider configuration:
 
 ```js
 // usually stored in a JSON configuration file
@@ -31,7 +31,7 @@ var config = {
 var google = purest({provider: 'google', config})
 ```
 
-Alternatively you can use the common configuration for all of the pre-configured providers in Purest:
+Alternatively we can use the common configuration for all of the pre-configured [providers][purest-providers] in Purest:
 
 ```js
 // the @purest/providers module contains basic configuration for about 150 providers
@@ -41,3 +41,6 @@ var google = purest({provider: 'google', config})
 var facebook = purest({provider: 'facebook', config})
 var twitter = purest({provider: 'twitter', config})
 ```
+
+
+  [purest-providers]: https://github.com/purestjs/providers

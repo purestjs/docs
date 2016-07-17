@@ -3,12 +3,12 @@
 
 ## HTTP Client Library
 
-Purest have one required dependency and that is the underlying HTTP client library to use:
+Purest requires HTTP client library to work with:
 
 ```js
-// use the request module as an underlying HTTP client library
+// use the request module as underlying HTTP client library
 var request = require('request')
-// initialize Purest (defaults to callback API)
+// initialize Purest (defaults to callbacks)
 var purest = require('purest')({request})
 ```
 
@@ -16,7 +16,7 @@ The `request` key is used to specify the underlying HTTP client library.
 
 ## Promises
 
-Additionally you can specify a Promise implementation to use:
+Additionally we can specify a Promise implementation to use:
 
 ```js
 // use bluebird

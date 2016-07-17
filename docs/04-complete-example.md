@@ -1,7 +1,7 @@
 
 # Complete Example
 
-For this example we are going to use the [request][request] module as an underlying HTTP Client Library. We will also include the basic configuration from [@purest/providers][purest-providers]. Lastly we are going to create a provider instance for Google:
+For this example we are going to use the [request][request] module as underlying HTTP client library. We will also include the basic configuration from [@purest/providers][purest-providers]. Lastly we are going to create a provider instance for Google:
 
 ```js
 var request = require('request')
@@ -10,7 +10,7 @@ var config = require('@purest/providers')
 var google = purest({provider: 'google', config})
 ```
 
-In this example we are going to request the [channels][youtube-channels] endpoint of the `YouTube` API:
+In this example we are going to request the [channels][youtube-channels] endpoint of the YouTube API:
 
 ```js
 google
@@ -21,7 +21,7 @@ google
   .request((err, res, body) => ())
 ```
 
-Here is how the related portion of the Google's configuration in [@purest/providers][purest-providers] looks like:
+Here is how the related portion of the Google's configuration looks like in [@purest/providers][purest-providers]:
 
 ```js
 "google": {
@@ -70,7 +70,7 @@ google
   .request((err, res, body) => ())
 ```
 
-Lastly we can create a separate instance specifically for making requests to the `YouTube` API, using the `alias` option in the Purest's constructor:
+Lastly we can create a separate instance specifically for making requests to the YouTube API, using the `alias` option of the Purest's constructor:
 
 ```js
 var youtube = purest({provider: 'google', config, alias: 'youtube'})
@@ -107,7 +107,7 @@ google.get('channels', {
 }, (err, res, body) => {})
 ```
 
-> Notice the `alias` key of the options object used for specifying which path alias to use.
+> Notice the `alias` key in the options object used for specifying which path alias to use.
 
 ## Promise API
 

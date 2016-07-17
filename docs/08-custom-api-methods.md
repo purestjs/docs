@@ -1,7 +1,7 @@
 
 # Custom Chain API Methods
 
-Purest comes with just a few of pre-configured method aliases to use with its [Chain API][chain-api]:
+Purest comes with just a few pre-configured method aliases to use with the *[Chain API][chain-api]*:
 
 ```js
 {
@@ -26,9 +26,9 @@ Purest comes with just a few of pre-configured method aliases to use with its [C
 }
 ```
 
-> The actual methods are on the left, and their aliases are to the right.
+> The actual methods are on the left side and their corresponding aliases are to the right.
 
-Using the above configuration the following *Chain API* calls are identical:
+Using the above configuration the following *[Chain API][chain-api]* calls are identical:
 
 ```js
 var facebook = purest({provider: 'facebook', config})
@@ -41,7 +41,7 @@ facebook
   .request((err, res, body) => {})
 ```
 
-> Notice that we called the `select()` method instead of `get()`.
+> Notice that we can call the `select()` method instead of `get()`.
 
 However you may want to define your own method aliases:
 
@@ -54,7 +54,7 @@ var facebook = purest({provider:'facebook', config,
 })
 ```
 
-Then the following code can be used:
+Then the following expression is valid:
 
 ```js
 facebook
@@ -62,11 +62,11 @@ facebook
   .submit((err, res, body) => {})
 ```
 
-> **Note:** Keep in mind that you should not use the actual method names as alias names.
+> **Note:** Keep in mind that the actual method names should not be used as aliases.
 
 > **Note:** Your alias methods override any previously defined aliases with the same name.
 
 TODO: Add example about defining custom methods
 
 
-  [chain-api]: ...
+  [chain-api]: https://simov.gitbooks.io/purest/content/docs/03-provider-api.html#chain-api

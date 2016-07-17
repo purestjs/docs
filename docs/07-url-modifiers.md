@@ -1,12 +1,12 @@
 
 # URL Modifiers
 
-Purest supports a few tokens that we can embed into our provider's domain and path configurations.
+Purest supports a few tokens that can be embedded into our provider's domain and path definitions.
 
 
 ## Domain Modifiers
 
-Currently there is only one domain modifier that you can use called `[subdomain]`:
+Currently there is only one domain modifier that we can use called `[subdomain]`:
 
 ```js
 "mailchimp": {
@@ -22,7 +22,7 @@ The `subdomain` value is usually a user specific data that needs to be added to 
 We can set that value in various ways:
 
 ```js
-// set it directly in the config
+// set it directly in the configuration
 "salesforce": {
   "https://[subdomain].salesforce.com": {
     "__domain": {
@@ -33,7 +33,7 @@ We can set that value in various ways:
 ```
 
 ```js
-// Set it in the constructor
+// set it in the constructor
 var salesforce = purest({provider: 'salesforce', config, subdomain: 'us2'})
 ```
 
@@ -52,7 +52,7 @@ salesforce.get('me', {subdomain: 'us2'}, (err, res, body) => {})
 
 ## Path Modifiers
 
-The path modifiers are tokens that we can embed into our path definitions:
+The path modifiers are tokens that can be embedded into our path definitions:
 
 ```js
 "basecamp": {
@@ -73,13 +73,13 @@ Having the above configuration we can request the `https://basecamp.com/123/api/
 var basecamp = purest({provider: 'basecamp', config})
 basecamp
   .get('people/me')
-  .options({subpath: '[USER_ID]'})
+  .options({subpath: '123'})
   .request((err, res, body) => {})
 ```
 
-Supported path modifiers are:
+The supported path modifiers are:
 
-- `[subpath]` arbitrary string placed in the path
+- `[subpath]` arbitrary string added to the path
 - `[version]` used for specifying the API version
 - `[type]` data type of the response, defaults to `json`
 - `{endpoint}` the endpoint to request, *notice the `{}`*

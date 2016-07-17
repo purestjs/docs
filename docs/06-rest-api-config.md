@@ -1,7 +1,7 @@
 
 # REST API Configuration
 
-This is how `Facebook` is configured in [@purest/providers][purest-providers]:
+This is how Facebook is configured in [@purest/providers][purest-providers]:
 
 ```js
 var config = {
@@ -24,7 +24,7 @@ var config = {
 
 That's the bare minimum configuration that we want to have for a provider.
 
-With this configuration we can request the user's profile like this:
+With the above configuration we can request the user's profile like this:
 
 ```js
 var facebook = purest({provider: 'facebook', config})
@@ -39,7 +39,7 @@ This will result in requesting the `https://graph.facebook.com/me` endpoint of t
 
 ## Domain
 
-Each provider configuration should contain at least one domain in it, though it can also contain multiple domains:
+Each provider configuration should contain at least one domain in it, though it can contain multiple domains:
 
 ```js
 "google": {
@@ -62,17 +62,17 @@ Each domain can contain one optional `__domain` meta key in it for specifying op
 }
 ```
 
-In this case we're specifying authentication scheme to use with the `.auth()` method of the *Chain API*.
+In this case we're specifying authentication scheme to use with the `.auth()` method of the *[Chain API][chain-api]*.
 
 
 ## Auth
 
 The `auth` key can be used inside `__domain`, `__path` and `__endpoint` meta key. The innermost `auth` configuration key overrides the outer ones.
 
-The `auth` key is designed to be used only with the `.auth()` method of the *[Chain API][chain-api]*. It can contain any valid request options:
+The `auth` key is designed to be used with the `.auth()` method of the *[Chain API][chain-api]*. It can contain any valid request options:
 
 ```js
-// one of the following
+// one of the following:
 "auth": {
   // OAuth1.0
   "oauth": {"token": "[0]", "secret": "[1]"}
@@ -174,7 +174,7 @@ In the exact same way we can request the `https://www.googleapis.com/plus/v1/peo
 ```js
 google
   .query('plus')
-  .select('people/me')
+  .get('people/me')
   .auth('[ACCESS_TOKEN]')
   .request((err, res, body) => {})
 ```
@@ -196,7 +196,7 @@ Each path should have a `__path` meta key in it specifying `alias` name to use t
 }
 ```
 
-> All alias names should be unique for that provider!
+> All alias names should be unique for a provider!
 
 Having the above configuration we can access the Google+ API in various ways:
 
@@ -204,12 +204,12 @@ Having the above configuration we can access the Google+ API in various ways:
 // one of the following:
 // default alias to use for this instance
 var google = purest({provider: 'google', config, alias: 'plus'})
-// Basic API
-google.get('people/me', {alias: 'plus'}, (err, res, body) => {})
 // Chain API
 google.query('plus').get('people/me').request((err, res, body) => {})
 // OR
 google.get('people/me').options({alias: 'plus'}).request((err, res, body) => {})
+// Basic API
+google.get('people/me', {alias: 'plus'}, (err, res, body) => {})
 ```
 
 Alternatively the `alias` key can contain a list of names:
@@ -237,8 +237,9 @@ google
   .request((err, res, body) => {})
 ```
 
+Same as:
+
 ```js
-// identical to
 google
   .query('storage')
   .get('about')
@@ -284,7 +285,7 @@ Each path can contain multiple endpoints in it:
 }
 ```
 
-With the above configuration every `GET` request to the `me/picture` endpoint will have the `encoding: null` [request option][request-options] set:
+With the above configuration each `GET` request made to the `me/picture` endpoint will have the `encoding: null` [request option][request-options] set:
 
 ```js
 var live = purest({provider: 'live', config})
@@ -295,11 +296,11 @@ live
   .request((err, res, body) => {})
 ```
 
-> The `encoding: null` option is required when using the [request][request] module, and when we expect binary response body, such as image.
+> The `encoding: null` option is required with the [request][request] module when binary response body is expected, such as image.
 
-Additionally, with the above configuration, each `PUT` request made to the `[USER_ID]/skydrive/files/[FILE_NAME]` endpoint will have the `Content-Type: application/json` header set.
+Additionally with the above configuration each `PUT` request made to the `[USER_ID]/skydrive/files/[FILE_NAME]` endpoint will have the `Content-Type: application/json` header set.
 
-The only difference here is that this a `regex` endpoint definition:
+The only difference here is that this is a `regex` endpoint:
 
 ```js
 ".*\\/skydrive\\/files\\/.*": {
@@ -316,7 +317,7 @@ Omitting the `regex: true` key will result in a regular string endpoint.
 
 ## Match All
 
-There is one special endpoint that can be used to match all endpoints:
+There is one special endpoint that matches all endpoints:
 
 ```js
 "*": {
@@ -326,9 +327,9 @@ There is one special endpoint that can be used to match all endpoints:
 }
 ```
 
-This will result in all `GET` requests made to any of the endpoints in that path having the `x-li-format: json` header set.
+This will result in all `GET` requests made to any endpoint in that path having the `x-li-format: json` header set.
 
-Finally one special HTTP method can be used to match all request types:
+Finally one special HTTP method can be used to match all request methods:
 
 ```js
 "*": {
@@ -342,6 +343,6 @@ This will result in having the `x-li-format: json` header being set **always** f
 
 
   [purest-providers]: https://github.com/purestjs/providers
-  [chain-api]: ...
+  [chain-api]: https://simov.gitbooks.io/purest/content/docs/03-provider-api.html#chain-api
   [request-options]: https://github.com/request/request#requestoptions-callback
   [request]: https://github.com/request/request
