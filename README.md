@@ -1,7 +1,7 @@
 
 # Purest
 
-[![npm-version]][npm] [![travis-ci]][travis] [![coveralls-status]][coveralls] [![codecov-status]][codecov]
+[![NPM Package Version](https://img.shields.io/npm/v/purest.svg?style=flat-square)](https://www.npmjs.com/package/purest) [![Build Status - Travis CI](https://img.shields.io/travis/simov/purest/master.svg?style=flat-square)](https://travis-ci.org/simov/purest) [![Test Coverage - Coveralls](https://img.shields.io/coveralls/simov/purest.svg?style=flat-square)](https://coveralls.io/r/simov/purest?branch=master) [![Test Coverage - Codecov](https://img.shields.io/codecov/c/github/simov/purest.svg?style=flat-square)](https://codecov.io/github/simov/purest?branch=master)
 
 Purest is a generic REST API client library that can be used with *any* REST API, *any* HTTP client library and *any* Promise implementation:
 
